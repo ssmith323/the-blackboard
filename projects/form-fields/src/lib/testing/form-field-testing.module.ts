@@ -5,25 +5,25 @@ import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { AbstractFormFieldComponent } from '../abstract-form-field.component';
 
 @Component({
-  selector: 'app-datepicker',
+  selector: 'ff-datepicker',
   template: '<div [id]="label"></div>',
 })
 class DatepickerComponent extends AbstractFormFieldComponent {}
 
 @Component({
-  selector: 'app-input',
+  selector: 'ff-input',
   template: '<div [id]="label"></div>',
 })
 class InputComponent extends AbstractFormFieldComponent {}
 
 @Component({
-  selector: 'app-slider',
+  selector: 'ff-slider',
   template: '<div [id]="label"></div>',
 })
 class SliderComponent extends AbstractFormFieldComponent {}
 
 @Component({
-  selector: 'app-select',
+  selector: 'ff-select',
   template: '<div [id]="label"></div>',
 })
 class SelectComponent extends AbstractFormFieldComponent {
@@ -31,11 +31,11 @@ class SelectComponent extends AbstractFormFieldComponent {
 }
 
 @Component({
-  selector: 'app-submit',
+  selector: 'ff-submit',
   template: '<button type="submit">Submit</button>',
 })
 class SubmitComponent {
-  @Input() form: FormGroup;
+  @Input() form!: FormGroup;
 }
 
 const components = [

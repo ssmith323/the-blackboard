@@ -3,13 +3,15 @@ import { Component, Input, OnInit } from '@angular/core';
 import { AbstractFormFieldComponent } from '../abstract-form-field.component';
 
 @Component({
-  selector: 'app-select',
+  selector: 'ff-select',
   templateUrl: './select.component.html',
   styleUrls: ['./select.component.scss'],
 })
-export class SelectComponent<T> extends AbstractFormFieldComponent
-  implements OnInit {
-  @Input() options: BasicOption<T>[];
+export class SelectComponent<T>
+  extends AbstractFormFieldComponent
+  implements OnInit
+{
+  @Input() options!: BasicOption<T>[];
 
   constructor() {
     super();

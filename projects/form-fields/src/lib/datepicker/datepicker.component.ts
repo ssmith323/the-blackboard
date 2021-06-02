@@ -4,12 +4,14 @@ import { MatDatepicker } from '@angular/material/datepicker';
 import { AbstractFormFieldComponent } from '../abstract-form-field.component';
 
 @Component({
-  selector: 'app-datepicker',
+  selector: 'ff-datepicker',
   templateUrl: './datepicker.component.html',
   styleUrls: ['./datepicker.component.scss'],
 })
-export class DatepickerComponent extends AbstractFormFieldComponent
-  implements OnInit {
+export class DatepickerComponent
+  extends AbstractFormFieldComponent
+  implements OnInit
+{
   constructor() {
     super();
   }

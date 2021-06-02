@@ -1,3 +1,1 @@
-export enum ErrorMessages {
-  required = 'This field is required',
-}
+export const ErrorMessages = new Map([['required', 'This field is required']]);

@@ -8,11 +8,11 @@ import { ErrorMessages } from './error-messages';
   template: '<div></div>',
 })
 export abstract class AbstractFormFieldComponent {
-  @Input() control: FormControl;
-  @Input() label: string;
-  @Input() idOverride: string;
+  @Input() control!: FormControl;
+  @Input() label!: string;
+  @Input() idOverride!: string;
 
-  id: string;
+  id!: string;
 
   constructor() {}
 
@@ -20,7 +20,7 @@ export abstract class AbstractFormFieldComponent {
     let message = '';
     for (const id in control.errors) {
       if (control.errors.hasOwnProperty(id)) {
-        message += ErrorMessages[id];
+        message += ErrorMessages.get(id);
       }
     }
     return message;
