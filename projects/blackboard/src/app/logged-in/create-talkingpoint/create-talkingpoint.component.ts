@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { BasicOption } from 'projects/form-fields/src/public-api';
 
 import { AuthService } from '../../services/auth.service';
+import { TalkingPoint, TalkingpointService } from '../services/talkingpoint.service';
 
 @Component({
   selector: 'app-create-talkingpoint',
@@ -13,7 +15,12 @@ export class CreateTalkingpointComponent implements OnInit {
   form: FormGroup;
   types: BasicOption<any>[];
 
-  constructor(private fb: FormBuilder, private auth: AuthService) {
+  constructor(
+    private fb: FormBuilder,
+    private auth: AuthService,
+    private talkingpointService: TalkingpointService,
+    private router: Router,
+  ) {
     this.form = this.fb.group({
       title: ['', Validators.required],
       type: ['', Validators.required],
@@ -37,5 +44,11 @@ export class CreateTalkingpointComponent implements OnInit {
       .then(({ displayName }) => this.form.get('name')?.setValue(displayName));
   }
 
-  submit() {}
+  submit() {
+    const talkingpoint: TalkingPoint = this.form.value;
+    talkingpoint.name = this.form.get('name')?.value;
+    talkingpoint.removalDate = talkingpoint.removalDate.toString();
+    this.talkingpointService.save(talkingpoint);
+    this.router.navigateByUrl('/home');
+  }
 }
