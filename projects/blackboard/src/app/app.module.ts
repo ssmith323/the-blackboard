@@ -3,6 +3,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatNativeDateModule } from '@angular/material/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormFieldModule } from 'projects/form-fields/src/public-api';
@@ -22,6 +23,7 @@ import { AppComponent } from './app.component';
     FormFieldModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
+    MatNativeDateModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,0 +1,5 @@
+<mat-form-field style="width: 100%;">
+    <mat-label [id]="id + 'Label'">{{ label }}</mat-label>
+    <textarea  [id]="id + 'Input'" matInput [formControl]="control"></textarea>
+    <mat-error *ngIf="control.invalid">{{ getMessage(control) }}</mat-error>
+</mat-form-field>

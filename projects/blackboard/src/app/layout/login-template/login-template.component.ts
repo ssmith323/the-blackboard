@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 
 import { AuthService } from '../../services/auth.service';
+import { NavLink } from './nav-link/nav-link.component';
 
 @Component({
   selector: 'app-login-template',
@@ -13,6 +14,7 @@ import { AuthService } from '../../services/auth.service';
 })
 export class LoginTemplateComponent {
   isDarkMode = true;
+  navList: NavLink[];
   isHandset$: Observable<boolean> = this.breakpointObserver
     .observe(Breakpoints.Handset)
     .pipe(
@@ -25,7 +27,20 @@ export class LoginTemplateComponent {
     private breakpointObserver: BreakpointObserver,
     private auth: AuthService,
     private router: Router,
-  ) {}
+  ) {
+    this.navList = [
+      {
+        label: 'Home',
+        icon: 'home',
+        link: 'home',
+      },
+      {
+        label: 'Create',
+        icon: 'add',
+        link: 'create',
+      },
+    ];
+  }
 
   changeTheme() {
     this.isDarkMode = !this.isDarkMode;

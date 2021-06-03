@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { CreateTalkingpointComponent } from './create-talkingpoint/create-talkingpoint.component';
 import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
+  { path: 'create', component: CreateTalkingpointComponent },
 ];
 
 @NgModule({
@@ -13,5 +15,5 @@ const routes: Routes = [
   exports: [RouterModule],
 })
 export class LoggedInRoutingModule {
-  static components = [HomeComponent];
+  static components = [HomeComponent, CreateTalkingpointComponent];
 }

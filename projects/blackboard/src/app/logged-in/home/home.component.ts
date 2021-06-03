@@ -12,7 +12,7 @@ export class HomeComponent implements OnInit {
 
   constructor(private auth: AuthService) {}
 
-  ngOnInit(): void {
-    this.user = this.auth.user;
+  async ngOnInit(): Promise<void> {
+    this.user = await this.auth.getUser();
   }
 }

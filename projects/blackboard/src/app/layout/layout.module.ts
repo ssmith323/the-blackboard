@@ -9,9 +9,10 @@ import { RouterModule } from '@angular/router';
 
 import { AnonymousTemplateComponent } from './anonymous-template/anonymous-template.component';
 import { LoginTemplateComponent } from './login-template/login-template.component';
+import { NavLinkComponent } from './login-template/nav-link/nav-link.component';
 
 @NgModule({
-  declarations: [LoginTemplateComponent, AnonymousTemplateComponent],
+  declarations: [LoginTemplateComponent, AnonymousTemplateComponent, NavLinkComponent],
   imports: [
     CommonModule,
     RouterModule,

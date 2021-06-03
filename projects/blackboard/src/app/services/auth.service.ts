@@ -1,17 +1,13 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AuthService implements OnInit {
-  user: any;
+export class AuthService {
+  private user: any;
 
   constructor(private auth: AngularFireAuth) {}
-
-  async ngOnInit(): Promise<void> {
-    this.user = await this.auth.currentUser;
-  }
 
   async createUser(user: User): Promise<void> {
     await this.auth.createUserWithEmailAndPassword(user.email, user.password);
@@ -30,6 +26,10 @@ export class AuthService implements OnInit {
 
   async signout(): Promise<void> {
     await this.auth.signOut();
+  }
+
+  async getUser() {
+    return this.user || (await this.auth.currentUser);
   }
 }
 

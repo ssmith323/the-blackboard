@@ -14,6 +14,7 @@ import { SelectComponent } from './select/select.component';
 import { SliderComponent } from './slider/slider.component';
 import { SubmitFormDirective } from './submit/submit-form.directive';
 import { SubmitComponent } from './submit/submit.component';
+import { TextareaComponent } from './textarea/textarea.component';
 
 const components = [
   InputComponent,
@@ -21,6 +22,7 @@ const components = [
   DatepickerComponent,
   SubmitComponent,
   SliderComponent,
+  TextareaComponent,
 ];
 
 @NgModule({
