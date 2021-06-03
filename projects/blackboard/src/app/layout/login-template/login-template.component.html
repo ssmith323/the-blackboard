@@ -20,6 +20,9 @@
                     (click)="changeTheme()">
                     <mat-icon aria-label="Side nav toggle icon">format_color_fill</mat-icon>
                 </button>
+                <button id="logoutButton" type="button" aria-label="Log Out" mat-icon-button (click)="logout()">
+                    <mat-icon aria-label="Side nav toggle icon">logout</mat-icon>
+                </button>
             </mat-toolbar>
             <main role="main">
                 <router-outlet></router-outlet>

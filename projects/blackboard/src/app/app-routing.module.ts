@@ -26,10 +26,8 @@ const routes: Routes = [
   {
     path: '',
     component: LoginTemplateComponent,
-    children: [
-      { path: '', redirectTo: 'home', pathMatch: 'full' },
-      { path: 'home', component: LoginComponent },
-    ],
+    loadChildren: () =>
+      import('./logged-in/logged-in.module').then((m) => m.LoggedInModule),
     ...canActivate(redirectUnauthorizedToLogin),
   },
   { path: '**', component: NotFoundComponent },

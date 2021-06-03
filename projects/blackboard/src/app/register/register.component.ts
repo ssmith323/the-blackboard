@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -13,7 +14,7 @@ export class RegisterComponent {
 
   constructor(
     private fb: FormBuilder,
-    private auth: AngularFireAuth,
+    private auth: AuthService,
     private router: Router,
   ) {
     this.registerForm = this.fb.group({
@@ -27,8 +28,7 @@ export class RegisterComponent {
   async submit() {
     const user = this.registerForm.value;
     try {
-      await this.auth.createUserWithEmailAndPassword(user.email, user.password);
-      await this.auth.signInWithEmailAndPassword(user.email, user.password);
+      await this.auth.createUser(user);
       this.router.navigateByUrl('/home');
     } catch (e) {
       console.log(e);

@@ -1,7 +1,10 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
+
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login-template',
@@ -18,9 +21,18 @@ export class LoginTemplateComponent {
     );
   // navList: NavLink[] = [{ label: 'Home', icon: 'home', link: 'home' }];
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(
+    private breakpointObserver: BreakpointObserver,
+    private auth: AuthService,
+    private router: Router,
+  ) {}
 
   changeTheme() {
     this.isDarkMode = !this.isDarkMode;
+  }
+
+  async logout() {
+    await this.auth.signout();
+    this.router.navigateByUrl('/login');
   }
 }
