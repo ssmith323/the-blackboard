@@ -21,7 +21,6 @@ export class LoginTemplateComponent {
       map((result) => result.matches),
       shareReplay(),
     );
-  // navList: NavLink[] = [{ label: 'Home', icon: 'home', link: 'home' }];
 
   constructor(
     private breakpointObserver: BreakpointObserver,
