@@ -1,8 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { MatCardHarness } from '@angular/material/card/testing';
+import { MatCardModule } from '@angular/material/card';
 import { RouterTestingModule } from '@angular/router/testing';
 import { FormFieldTestingModule } from 'projects/form-fields/src/public-api';
 
+import { AuthService } from '../services/auth.service';
 import { RegisterComponent } from './register.component';
 
 describe('RegisterComponent', () => {
@@ -15,7 +16,8 @@ describe('RegisterComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [RegisterComponent],
-      imports: [FormFieldTestingModule, RouterTestingModule, MatCardHarness],
+      imports: [FormFieldTestingModule, RouterTestingModule, MatCardModule],
+      providers: [{ provide: AuthService, useValue: authService }],
     }).compileComponents();
   });
 
