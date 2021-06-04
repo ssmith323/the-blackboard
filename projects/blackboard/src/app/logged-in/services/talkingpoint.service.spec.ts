@@ -4,7 +4,7 @@ import { of } from 'rxjs';
 
 import { TalkingPoint, TalkingpointService } from './talkingpoint.service';
 
-fdescribe('TalkingpointService', () => {
+describe('TalkingpointService', () => {
   let service: TalkingpointService;
 
   const db = jasmine.createSpyObj(['list']);
