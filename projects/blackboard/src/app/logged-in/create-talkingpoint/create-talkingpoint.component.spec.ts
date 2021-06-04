@@ -1,16 +1,35 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatCardModule } from '@angular/material/card';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { Router } from '@angular/router';
+import { FormFieldTestingModule } from 'projects/form-fields/src/public-api';
 
+import { AuthService } from '../../services/auth.service';
+import { TalkingpointService } from '../services/talkingpoint.service';
 import { CreateTalkingpointComponent } from './create-talkingpoint.component';
 
 describe('CreateTalkingpointComponent', () => {
   let component: CreateTalkingpointComponent;
   let fixture: ComponentFixture<CreateTalkingpointComponent>;
 
+  const auth = jasmine.createSpyObj(['getUser']);
+  auth.getUser.and.returnValue(Promise.resolve('Stephen'));
+
+  const router = jasmine.createSpyObj(['navigateByUrl']);
+  router.navigateByUrl.and.returnValue();
+
+  const tpService = jasmine.createSpyObj(['save']);
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CreateTalkingpointComponent ]
-    })
-    .compileComponents();
+      declarations: [CreateTalkingpointComponent],
+      imports: [FormFieldTestingModule, MatCardModule, MatToolbarModule],
+      providers: [
+        { provide: TalkingpointService, useValue: tpService },
+        { provide: AuthService, useValue: auth },
+        { provide: Router, useValue: router },
+      ],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -21,5 +40,12 @@ describe('CreateTalkingpointComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should submit', () => {
+    component.submit();
+
+    expect(tpService.save).toHaveBeenCalled();
+    expect(router.navigateByUrl).toHaveBeenCalledWith('/home');
   });
 });

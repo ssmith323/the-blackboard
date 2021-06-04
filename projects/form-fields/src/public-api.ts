@@ -2,7 +2,7 @@
  * Public API Surface of form-fields
  */
 
-export * from './lib/testing/form-field-testing.module';
+export { FormFieldTestingModule } from './lib/testing/form-field-testing.module';
 export * from './lib/datepicker/datepicker.component';
 export * from './lib/input/input.component';
 export * from './lib/select/select.component';

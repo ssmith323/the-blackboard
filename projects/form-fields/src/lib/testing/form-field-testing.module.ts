@@ -8,25 +8,31 @@ import { AbstractFormFieldComponent } from '../abstract-form-field.component';
   selector: 'ff-datepicker',
   template: '<div [id]="label"></div>',
 })
-class DatepickerComponent extends AbstractFormFieldComponent {}
+export class DatepickerComponent extends AbstractFormFieldComponent {}
 
 @Component({
   selector: 'ff-input',
   template: '<div [id]="label"></div>',
 })
-class InputComponent extends AbstractFormFieldComponent {}
+export class InputComponent extends AbstractFormFieldComponent {}
+
+@Component({
+  selector: 'ff-textarea',
+  template: '<div [id]="label"></div>',
+})
+export class TextAreaComponent extends AbstractFormFieldComponent {}
 
 @Component({
   selector: 'ff-slider',
   template: '<div [id]="label"></div>',
 })
-class SliderComponent extends AbstractFormFieldComponent {}
+export class SliderComponent extends AbstractFormFieldComponent {}
 
 @Component({
   selector: 'ff-select',
   template: '<div [id]="label"></div>',
 })
-class SelectComponent extends AbstractFormFieldComponent {
+export class SelectComponent extends AbstractFormFieldComponent {
   @Input() options: any;
 }
 
@@ -34,7 +40,7 @@ class SelectComponent extends AbstractFormFieldComponent {
   selector: 'ff-submit',
   template: '<button type="submit">Submit</button>',
 })
-class SubmitComponent {
+export class SubmitComponent {
   @Input() form!: FormGroup;
 }
 
@@ -44,6 +50,7 @@ const components = [
   DatepickerComponent,
   SubmitComponent,
   SliderComponent,
+  TextAreaComponent,
 ];
 
 @NgModule({
