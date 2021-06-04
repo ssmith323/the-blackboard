@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatCardModule } from '@angular/material/card';
 import { RouterTestingModule } from '@angular/router/testing';
 import { FormFieldTestingModule } from 'projects/form-fields/src/public-api';
 
@@ -15,7 +16,7 @@ describe('LoginComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [LoginComponent],
-      imports: [FormFieldTestingModule, RouterTestingModule],
+      imports: [FormFieldTestingModule, RouterTestingModule, MatCardModule],
       providers: [{ provide: AuthService, useValue: auth }],
     }).compileComponents();
   });

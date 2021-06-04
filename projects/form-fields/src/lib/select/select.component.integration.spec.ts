@@ -11,7 +11,7 @@ import { SelectComponent } from './select.component';
 
 @Component({
   selector: 'app-host',
-  template: '<app-select [control]="control"></app-select>',
+  template: '<ff-select [control]="control"></ff-select>',
 })
 class HostComponent {
   control = new FormControl();
@@ -38,8 +38,9 @@ describe('SelectComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(HostComponent);
     hostComponent = fixture.componentInstance;
-    component = fixture.debugElement.query(By.directive(SelectComponent))
-      .componentInstance;
+    component = fixture.debugElement.query(
+      By.directive(SelectComponent),
+    ).componentInstance;
     fixture.detectChanges();
   });
 

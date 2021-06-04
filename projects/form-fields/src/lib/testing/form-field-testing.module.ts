@@ -17,6 +17,12 @@ export class DatepickerComponent extends AbstractFormFieldComponent {}
 export class InputComponent extends AbstractFormFieldComponent {}
 
 @Component({
+  selector: 'ff-textarea',
+  template: '<div [id]="label"></div>',
+})
+export class TextAreaComponent extends AbstractFormFieldComponent {}
+
+@Component({
   selector: 'ff-slider',
   template: '<div [id]="label"></div>',
 })
@@ -44,6 +50,7 @@ const components = [
   DatepickerComponent,
   SubmitComponent,
   SliderComponent,
+  TextAreaComponent,
 ];
 
 @NgModule({

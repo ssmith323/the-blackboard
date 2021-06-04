@@ -8,7 +8,7 @@ import { SliderComponent } from './slider.component';
 
 @Component({
   selector: 'app-host',
-  template: '<app-slider [control]="control" label="Pick Me!"></app-slider>',
+  template: '<ff-slider [control]="control" label="Pick Me!"></ff-slider>',
 })
 class HostComponent {
   control = new FormControl(true);
@@ -27,8 +27,9 @@ describe('SliderComponent', () => {
 
   beforeEach(() => {
     fixture = TestBed.createComponent(HostComponent);
-    component = fixture.debugElement.query(By.directive(SliderComponent))
-      .componentInstance;
+    component = fixture.debugElement.query(
+      By.directive(SliderComponent),
+    ).componentInstance;
     fixture.detectChanges();
   });
 

@@ -11,8 +11,7 @@ import { DatepickerComponent } from './datepicker.component';
 
 @Component({
   selector: 'app-host',
-  template:
-    '<app-datepicker [control]="control" label="test"></app-datepicker>',
+  template: '<ff-datepicker [control]="control" label="test"></ff-datepicker>',
 })
 class HostComponent {
   control: FormControl = new FormControl();

@@ -10,7 +10,7 @@ import { InputComponent } from './input.component';
 
 @Component({
   selector: 'app-host',
-  template: '<app-input [control]="control"></app-input>',
+  template: '<ff-input [control]="control"></ff-input>',
 })
 class HostComponent {
   control = new FormControl();
@@ -36,8 +36,9 @@ describe('InputComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(HostComponent);
     hostComponent = fixture.componentInstance;
-    component = fixture.debugElement.query(By.directive(InputComponent))
-      .componentInstance;
+    component = fixture.debugElement.query(
+      By.directive(InputComponent),
+    ).componentInstance;
     fixture.detectChanges();
   });
 
