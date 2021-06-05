@@ -28,20 +28,4 @@ describe('TalkingpointService', () => {
       expect(db.list).toHaveBeenCalledWith('talkingpoints');
     });
   });
-
-  describe('getNewFaces', () => {
-    it('should get new faces', () => {
-      service.getNewFaces();
-
-      expect(db.list).toHaveBeenCalled();
-    });
-  });
-
-  describe('getInterestings', () => {
-    it('should get interestings', () => {
-      service.getInterestings();
-
-      expect(db.list).toHaveBeenCalled();
-    });
-  });
 });
