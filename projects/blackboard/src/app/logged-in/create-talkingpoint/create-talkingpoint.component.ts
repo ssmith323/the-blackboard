@@ -30,11 +30,11 @@ export class CreateTalkingpointComponent implements OnInit {
     });
 
     this.types = [
-      { label: 'New Face', value: 'new_face' },
-      { label: 'Interesting', value: 'intesting' },
-      { label: 'Help', value: 'help' },
-      { label: 'Event', value: 'event' },
-      { label: 'Shout Out', value: 'shoutout' },
+      { label: 'New Face', value: 'new-faces' },
+      { label: 'Interesting', value: 'interestings' },
+      { label: 'Help', value: 'helps' },
+      { label: 'Event', value: 'events' },
+      { label: 'Shout Out', value: 'shout-outs' },
     ];
   }
 
@@ -47,7 +47,7 @@ export class CreateTalkingpointComponent implements OnInit {
   submit() {
     const talkingpoint: TalkingPoint = this.form.value;
     talkingpoint.name = this.form.get('name')?.value;
-    talkingpoint.removalDate = talkingpoint.removalDate.toString();
+    talkingpoint.removalDate = new Date(talkingpoint.removalDate).getTime();
     this.talkingpointService.save(talkingpoint);
     this.router.navigateByUrl('/home');
   }

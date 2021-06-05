@@ -1,0 +1,15 @@
+<div class="container">
+    <mat-card>
+        <mat-card-title>Create Talking Point</mat-card-title>
+        <form [formGroup]="form" (ngSubmit)="start()">
+            <mat-card-content>
+                <ff-input type="text" label="Presentor" [control]="form.get('presentor')"></ff-input>
+                <ff-input type="text" label="Date" [control]="form.get('date')"></ff-input>
+                <ff-input type="text" label="YouTube Link" [control]="form.get('youtubeLink')"></ff-input>
+            </mat-card-content>
+            <mat-card-actions>
+                <ff-submit [form]="form"></ff-submit>
+            </mat-card-actions>
+        </form>
+    </mat-card>
+</div>
