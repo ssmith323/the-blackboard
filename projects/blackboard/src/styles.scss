@@ -18,3 +18,15 @@ body {
 .container {
   margin: 50px;
 }
+
+.f {
+  display: flex;
+
+  &.center {
+    align-items: center;
+  }
+
+  &.column {
+    flex-direction: column;
+  }
+}

@@ -1,6 +1,12 @@
-<div class="container">
-    <h1>{{presentor}}</h1>
-    <h2>{{date}}</h2>
+<div class="container f center column">
+    <h1 class="mat-display-2" style="margin-bottom: 30px">Daily Standup for {{date}}</h1>
+    <div class="mat-headline">Today's presentor is {{presentor}}</div>
+    <div class="mat-headline">{{order[place] | titlecase}}</div>
     <router-outlet></router-outlet>
-        <button *ngIf="place!=0" (click)="navigate(-1)">Back</button><button *ngIf="place != order.length - 1" (click)="navigate(1)">Next</button>
+    <div class="f space-between row mat-body-strong" style="position: absolute;
+    bottom: 50px;">
+        <button *ngIf="place!=0" mat-icon-button color="primary" (click)="navigate(-1)"><mat-icon>keyboard_arrow_left</mat-icon></button>
+        <button mat-icon-button color="primary"><mat-icon>cancel_presentation</mat-icon></button>
+        <button *ngIf="place != order.length - 1" mat-icon-button color="primary" (click)="navigate(1)"><mat-icon>keyboard_arrow_right</mat-icon></button>
+    </div>
 </div>

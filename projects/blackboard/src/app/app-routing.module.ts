@@ -4,7 +4,6 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AnonymousTemplateComponent } from './layout/anonymous-template/anonymous-template.component';
 import { LayoutModule } from './layout/layout.module';
-import { LoginTemplateComponent } from './layout/login-template/login-template.component';
 import { LoginComponent } from './login/login.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { RegisterComponent } from './register/register.component';
@@ -25,7 +24,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    component: LoginTemplateComponent,
+
     loadChildren: () =>
       import('./logged-in/logged-in.module').then((m) => m.LoggedInModule),
     ...canActivate(redirectUnauthorizedToLogin),

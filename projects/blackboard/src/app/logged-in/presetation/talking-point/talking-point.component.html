@@ -1,1 +1,1 @@
-<p *ngFor="let t of talkingPoints | async | async">{{t | json}}</p>
+<app-item *ngFor="let t of talkingPoints | async | async" [item]="t"></app-item>
