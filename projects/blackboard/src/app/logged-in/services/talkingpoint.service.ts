@@ -9,21 +9,13 @@ export class TalkingpointService {
   constructor(private db: AngularFireDatabase) {}
 
   save(value: TalkingPoint) {
-    this.db.list<TalkingPoint>('talkingpoints').push(value);
+    this.db.list<TalkingPoint>(`talkingpoints/${value.type}`).push(value);
   }
 
-  getNewFaces(): Observable<TalkingPoint[]> {
-    return this.getByType('new_faces');
-  }
-
-  getInterestings(): Observable<TalkingPoint[]> {
-    return this.getByType('interestings');
-  }
-
-  private getByType(type: string): Observable<TalkingPoint[]> {
+  getBeforeToday(type: string): Observable<TalkingPoint[]> {
     return this.db
-      .list<TalkingPoint>('/talkingpoints', (ref) =>
-        ref.orderByChild('type').equalTo(type),
+      .list<TalkingPoint>(`/talkingpoints/${type}`, (ref) =>
+        ref.orderByChild('removalDate').startAt(new Date().getTime()),
       )
       .valueChanges();
   }
@@ -32,7 +24,7 @@ export class TalkingpointService {
 export interface TalkingPoint {
   title: string;
   type: string;
-  removalDate: string;
+  removalDate: number;
   name: string;
   description: string;
 }

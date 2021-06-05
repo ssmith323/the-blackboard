@@ -38,6 +38,11 @@ export class LoginTemplateComponent {
         icon: 'add',
         link: 'create',
       },
+      {
+        label: 'Setup',
+        icon: 'present_to_all',
+        link: 'setup',
+      },
     ];
   }
 
