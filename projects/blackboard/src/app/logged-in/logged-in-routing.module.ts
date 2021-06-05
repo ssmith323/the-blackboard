@@ -6,6 +6,7 @@ import { LayoutModule } from '../layout/layout.module';
 import { LoginTemplateComponent } from '../layout/login-template/login-template.component';
 import { CreateTalkingpointComponent } from './create-talkingpoint/create-talkingpoint.component';
 import { HomeComponent } from './home/home.component';
+import { PresentationGuard } from './layout/presentation.guard';
 import { CountdownComponent } from './presetation/countdown/countdown.component';
 import { PresetationComponent } from './presetation/presetation.component';
 import { TalkingPointComponent } from './presetation/talking-point/talking-point.component';
@@ -34,6 +35,7 @@ const routes: Routes = [
           { path: 'countdown', component: CountdownComponent },
           { path: ':id', component: TalkingPointComponent },
         ],
+        canActivate: [PresentationGuard],
       },
     ],
   },

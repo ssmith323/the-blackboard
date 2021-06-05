@@ -32,4 +32,8 @@ export class PresetationComponent implements OnInit {
     this.place = this.place + direction;
     this.router.navigateByUrl(`/presentation/${this.order[this.place]}`);
   }
+
+  stop(): void {
+    this.router.navigateByUrl('/home');
+  }
 }
