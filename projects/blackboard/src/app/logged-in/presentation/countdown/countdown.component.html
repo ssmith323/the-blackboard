@@ -1,4 +1,7 @@
-<iframe *ngIf="videoProvided" width="560" height="315" [src]="safeURL" title="YouTube video player"
-    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowfullscreen></iframe>
+<div class="f column center">
+    <iframe *ngIf="videoProvided" width="560" height="315" [src]="safeURL" title="YouTube video player" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen></iframe>
     <app-timer></app-timer>
+</div>
+
