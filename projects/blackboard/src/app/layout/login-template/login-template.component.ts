@@ -39,6 +39,31 @@ export class LoginTemplateComponent {
         link: 'create',
       },
       {
+        label: 'All New Faces',
+        icon: 'person_add',
+        link: 'view/new-faces',
+      },
+      {
+        label: 'All Interestings',
+        icon: 'interests',
+        link: 'view/interestings',
+      },
+      {
+        label: 'All Helps',
+        icon: 'contact_support',
+        link: 'view/helps',
+      },
+      {
+        label: 'All Events',
+        icon: 'event',
+        link: 'view/events',
+      },
+      {
+        label: 'All Shout-Outs',
+        icon: 'campaign',
+        link: 'view/shout-outs',
+      },
+      {
         label: 'Setup',
         icon: 'present_to_all',
         link: 'setup',
