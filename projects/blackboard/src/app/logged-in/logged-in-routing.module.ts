@@ -7,10 +7,10 @@ import { LoginTemplateComponent } from '../layout/login-template/login-template.
 import { CreateTalkingpointComponent } from './create-talkingpoint/create-talkingpoint.component';
 import { HomeComponent } from './home/home.component';
 import { PresentationGuard } from './layout/presentation.guard';
-import { CountdownComponent } from './presetation/countdown/countdown.component';
-import { PresetationComponent } from './presetation/presetation.component';
-import { StrechComponent } from './presetation/strech/strech.component';
-import { TalkingPointComponent } from './presetation/talking-point/talking-point.component';
+import { CountdownComponent } from './presentation/countdown/countdown.component';
+import { PresentationComponent } from './presentation/presentation.component';
+import { StrechComponent } from './presentation/strech/strech.component';
+import { TalkingPointComponent } from './presentation/talking-point/talking-point.component';
 import { StartPresentationComponent } from './start-presentation/start-presentation.component';
 import { ViewAllComponent } from './view-all/view-all.component';
 
@@ -32,7 +32,7 @@ const routes: Routes = [
     children: [
       {
         path: 'presentation',
-        component: PresetationComponent,
+        component: PresentationComponent,
         children: [
           { path: '', redirectTo: 'countdown', pathMatch: 'full' },
           { path: 'countdown', component: CountdownComponent },
@@ -54,7 +54,7 @@ export class LoggedInRoutingModule {
     HomeComponent,
     CreateTalkingpointComponent,
     StartPresentationComponent,
-    PresetationComponent,
+    PresentationComponent,
     CountdownComponent,
     TalkingPointComponent,
     ViewAllComponent,

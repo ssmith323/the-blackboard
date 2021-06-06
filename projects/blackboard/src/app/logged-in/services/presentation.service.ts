@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root',
 })
-export class PresetationService {
+export class PresentationService {
   presentor!: string;
   date!: string;
   youtubeLink!: string;

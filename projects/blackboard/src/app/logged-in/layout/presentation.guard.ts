@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 
-import { PresetationService } from '../services/presetation.service';
+import { PresentationService } from '../services/presentation.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PresentationGuard implements CanActivate {
-  constructor(private pService: PresetationService, private router: Router) {}
+  constructor(private pService: PresentationService, private router: Router) {}
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot,

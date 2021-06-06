@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { AuthService } from '../../services/auth.service';
-import { PresetationService } from '../services/presetation.service';
+import { PresentationService } from '../services/presentation.service';
 
 @Component({
   selector: 'app-start-presentation',
@@ -17,7 +17,7 @@ export class StartPresentationComponent implements OnInit {
     private fb: FormBuilder,
     private auth: AuthService,
     private router: Router,
-    private pService: PresetationService,
+    private pService: PresentationService,
   ) {
     this.auth.getUser().then(({ displayName }) => {
       this.form = this.fb.group({

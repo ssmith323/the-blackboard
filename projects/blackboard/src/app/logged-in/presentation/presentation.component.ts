@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { PresetationService } from '../services/presetation.service';
+import { PresentationService } from '../services/presentation.service';
 
 @Component({
   selector: 'app-presetation',
-  templateUrl: './presetation.component.html',
-  styleUrls: ['./presetation.component.scss'],
+  templateUrl: './presentation.component.html',
+  styleUrls: ['./presentation.component.scss'],
 })
-export class PresetationComponent implements OnInit {
+export class PresentationComponent implements OnInit {
   presentor: string;
   date: string;
   order = [
@@ -21,7 +21,10 @@ export class PresetationComponent implements OnInit {
   ];
   place = 0;
 
-  constructor(presentationService: PresetationService, private router: Router) {
+  constructor(
+    presentationService: PresentationService,
+    private router: Router,
+  ) {
     this.presentor = presentationService.presentor;
     this.date = presentationService.date;
   }
