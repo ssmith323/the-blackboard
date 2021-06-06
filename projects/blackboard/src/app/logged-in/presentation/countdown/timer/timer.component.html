@@ -1,0 +1,3 @@
+<div class="mat-headline">
+    <span *ngIf="(timer | async) > 0">{{timer  | async}} Seconds</span>
+    <span *ngIf="(timer | async) < 0">Now</span></div>
