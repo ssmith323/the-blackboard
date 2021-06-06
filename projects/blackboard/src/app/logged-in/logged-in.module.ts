@@ -8,9 +8,10 @@ import { FormFieldModule } from 'projects/form-fields/src/public-api';
 
 import { ItemComponent } from './item/item.component';
 import { LoggedInRoutingModule } from './logged-in-routing.module';
+import { TimerComponent } from './presentation/countdown/timer/timer.component';
 
 @NgModule({
-  declarations: [LoggedInRoutingModule.components, ItemComponent],
+  declarations: [LoggedInRoutingModule.components, ItemComponent, TimerComponent],
   imports: [
     CommonModule,
     LoggedInRoutingModule,
