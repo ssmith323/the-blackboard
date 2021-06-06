@@ -31,4 +31,5 @@ export interface TalkingPoint {
   removalDate: number;
   name: string;
   description: string;
+  userId?: string;
 }

@@ -27,6 +27,7 @@ export class CreateTalkingpointComponent implements OnInit {
       description: '',
       removalDate: ['', Validators.required],
       name: [{ value: '', disabled: true }, Validators.required],
+      userId: '',
     });
 
     this.types = [
@@ -39,9 +40,10 @@ export class CreateTalkingpointComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.auth
-      .getUser()
-      .then(({ displayName }) => this.form.get('name')?.setValue(displayName));
+    this.auth.getUser().then((user) => {
+      this.form.get('name')?.setValue(user.displayName);
+      this.form.get('userId')?.setValue(user.uid);
+    });
   }
 
   submit() {
