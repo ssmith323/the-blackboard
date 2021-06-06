@@ -6,8 +6,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { FormFieldModule } from 'projects/form-fields/src/public-api';
 
+import { ItemComponent } from './item/item.component';
 import { LoggedInRoutingModule } from './logged-in-routing.module';
-import { ItemComponent } from './presetation/talking-point/item/item.component';
 
 @NgModule({
   declarations: [LoggedInRoutingModule.components, ItemComponent],

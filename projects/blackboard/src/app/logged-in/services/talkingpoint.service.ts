@@ -12,6 +12,10 @@ export class TalkingpointService {
     this.db.list<TalkingPoint>(`talkingpoints/${value.type}`).push(value);
   }
 
+  getAll(type: string): Observable<TalkingPoint[]> {
+    return this.db.list<TalkingPoint>(`/talkingpoints/${type}`).valueChanges();
+  }
+
   getBeforeToday(type: string): Observable<TalkingPoint[]> {
     return this.db
       .list<TalkingPoint>(`/talkingpoints/${type}`, (ref) =>

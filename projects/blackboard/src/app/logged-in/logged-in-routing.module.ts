@@ -9,8 +9,10 @@ import { HomeComponent } from './home/home.component';
 import { PresentationGuard } from './layout/presentation.guard';
 import { CountdownComponent } from './presetation/countdown/countdown.component';
 import { PresetationComponent } from './presetation/presetation.component';
+import { StrechComponent } from './presetation/strech/strech.component';
 import { TalkingPointComponent } from './presetation/talking-point/talking-point.component';
 import { StartPresentationComponent } from './start-presentation/start-presentation.component';
+import { ViewAllComponent } from './view-all/view-all.component';
 
 const routes: Routes = [
   {
@@ -21,6 +23,7 @@ const routes: Routes = [
       { path: 'home', component: HomeComponent },
       { path: 'create', component: CreateTalkingpointComponent },
       { path: 'setup', component: StartPresentationComponent },
+      { path: 'view/:id', component: ViewAllComponent },
     ],
   },
   {
@@ -33,6 +36,7 @@ const routes: Routes = [
         children: [
           { path: '', redirectTo: 'countdown', pathMatch: 'full' },
           { path: 'countdown', component: CountdownComponent },
+          { path: 'strech', component: StrechComponent },
           { path: ':id', component: TalkingPointComponent },
         ],
         canActivate: [PresentationGuard],
@@ -53,5 +57,6 @@ export class LoggedInRoutingModule {
     PresetationComponent,
     CountdownComponent,
     TalkingPointComponent,
+    ViewAllComponent,
   ];
 }
