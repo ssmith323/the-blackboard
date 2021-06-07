@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { AngularFireAuth } from '@angular/fire/auth';
 
-import { AuthService } from './auth.service';
+import { AuthService, User } from './auth.service';
 
 describe('AuthService', () => {
   let service: AuthService;
@@ -11,6 +11,7 @@ describe('AuthService', () => {
     'signInWithEmailAndPassword',
     'signOut',
   ]);
+
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [{ provide: AngularFireAuth, useValue: auth }],
@@ -20,5 +21,18 @@ describe('AuthService', () => {
 
   it('should be created', () => {
     expect(service).toBeTruthy();
+  });
+
+  it('should create user', () => {
+    let user: User = {
+      email: 'test@accenture.com',
+      password: 'password123',
+      firstName: 'Test',
+      lastName: 'User'
+    };
+
+    service.createUser(user);
+
+    expect(auth.createUserWithEmailAndPassword).toHaveBeenCalledOnceWith(user.email, user.password);
   });
 });
