@@ -17,9 +17,11 @@ export class TalkingpointService {
   }
 
   getBeforeToday(type: string): Observable<TalkingPoint[]> {
+    const bod = new Date();
+    bod.setHours(0, 0, 0, 0);
     return this.db
       .list<TalkingPoint>(`/talkingpoints/${type}`, (ref) =>
-        ref.orderByChild('removalDate').startAt(new Date().getTime()),
+        ref.orderByChild('removalDate').startAt(bod.getTime()),
       )
       .valueChanges();
   }
