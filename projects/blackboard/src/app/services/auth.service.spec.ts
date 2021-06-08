@@ -2,6 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { AngularFireAuth } from '@angular/fire/auth';
 
 import { AuthService, User } from './auth.service';
+import { of, Observable } from 'rxjs';
 
 describe('AuthService', () => {
   let service: AuthService;
@@ -23,7 +24,7 @@ describe('AuthService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should create user', () => {
+  it('should create user', async () => {
     let user: User = {
       email: 'test@accenture.com',
       password: 'password123',
@@ -33,6 +34,11 @@ describe('AuthService', () => {
 
     service.createUser(user);
 
-    expect(auth.createUserWithEmailAndPassword).toHaveBeenCalledOnceWith(user.email, user.password);
+    spyOn(service, 'signIn').and.callFake;
+
+    await Promise.resolve();
+
+    expect(auth.createUserWithEmailAndPassword).toHaveBeenCalledWith(user.email, user.password);
+    expect(service.signIn).toHaveBeenCalledWith(user.email, user.password);
   });
 });
