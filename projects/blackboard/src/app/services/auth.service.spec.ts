@@ -7,12 +7,14 @@ describe('AuthService', () => {
     'createUserWithEmailAndPassword',
     'signInWithEmailAndPassword',
     'signOut',
+    'currentUser',
   ]);
   const userMock = jasmine.createSpyObj(['updateProfile']);
   userMock.updateProfile.and.returnValue(Promise.resolve());
   auth.signInWithEmailAndPassword.and.returnValue(
     Promise.resolve({ user: userMock }),
   );
+  auth.currentUser = Promise.resolve('test');
 
   auth.createUserWithEmailAndPassword.and.returnValue(Promise.resolve());
 
@@ -65,6 +67,22 @@ describe('AuthService', () => {
       await service.signout();
 
       expect(auth.signOut).toHaveBeenCalledWith();
+    });
+  });
+
+  describe('getUser', () => {
+    it('should get user from the auth', async () => {
+      const actual = await service.getUser();
+
+      expect(actual).toBe('test');
+    });
+
+    it('should get user from the auth', async () => {
+      await service.signIn('test', 'test');
+
+      const actual = await service.getUser();
+
+      expect(actual).toBe(userMock);
     });
   });
 });
