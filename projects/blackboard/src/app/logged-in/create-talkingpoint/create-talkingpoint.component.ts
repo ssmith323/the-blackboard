@@ -15,7 +15,6 @@ export class CreateTalkingpointComponent implements OnInit {
   form: FormGroup;
   types: BasicOption<any>[];
   params: any;
-  editItem: boolean;
 
   constructor(
     private fb: FormBuilder,
@@ -25,10 +24,9 @@ export class CreateTalkingpointComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
   ) {
     this.params = activatedRoute.snapshot.params;
-    this.editItem = !!this.params.key;
     this.form = this.fb.group({
       title: ['', Validators.required],
-      type: [{ value: '', disabled: this.editItem }, Validators.required],
+      type: ['', Validators.required],
       description: '',
       removalDate: ['', Validators.required],
       name: [{ value: '', disabled: true }, Validators.required],
@@ -45,7 +43,7 @@ export class CreateTalkingpointComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (this.editItem) {
+    if (this.params.key) {
       this.talkingpointService
         .getByKey(this.params.id, this.params.key)
         .subscribe((tp) => {
@@ -66,17 +64,17 @@ export class CreateTalkingpointComponent implements OnInit {
   submit() {
     const talkingpoint: TalkingPoint = this.form.value;
     talkingpoint.name = this.form.get('name')?.value;
-    talkingpoint.type = this.form.get('type')?.value;
     talkingpoint.removalDate = new Date(talkingpoint.removalDate).getTime();
-    if (this.editItem) {
+    if (this.params.key) {
       this.talkingpointService.update(
         this.params.key,
         talkingpoint.type,
         talkingpoint,
       );
-    } else {
-      this.talkingpointService.save(talkingpoint);
-    }
+      this.router.navigateByUrl('/home');
+    } else { 
+    this.talkingpointService.save(talkingpoint);
     this.router.navigateByUrl('/home');
+    }
   }
 }
