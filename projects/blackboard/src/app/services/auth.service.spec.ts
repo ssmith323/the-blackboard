@@ -1,7 +1,4 @@
-import { TestBed } from '@angular/core/testing';
-import { AngularFireAuth } from '@angular/fire/auth';
-
-import { AuthService } from './auth.service';
+import { AuthService, User } from './auth.service';
 
 describe('AuthService', () => {
   let service: AuthService;
@@ -10,15 +7,82 @@ describe('AuthService', () => {
     'createUserWithEmailAndPassword',
     'signInWithEmailAndPassword',
     'signOut',
+    'currentUser',
   ]);
+  const userMock = jasmine.createSpyObj(['updateProfile']);
+  userMock.updateProfile.and.returnValue(Promise.resolve());
+  auth.signInWithEmailAndPassword.and.returnValue(
+    Promise.resolve({ user: userMock }),
+  );
+  auth.currentUser = Promise.resolve('test');
+
+  auth.createUserWithEmailAndPassword.and.returnValue(Promise.resolve());
+
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      providers: [{ provide: AngularFireAuth, useValue: auth }],
-    });
-    service = TestBed.inject(AuthService);
+    service = new AuthService(auth);
   });
 
   it('should be created', () => {
     expect(service).toBeTruthy();
+  });
+
+  describe('createUser', () => {
+    it('should create user', async () => {
+      let user: User = {
+        email: 'test@accenture.com',
+        password: 'password123',
+        firstName: 'Test',
+        lastName: 'User',
+      };
+
+      await service.createUser(user);
+
+      expect(auth.createUserWithEmailAndPassword).toHaveBeenCalledWith(
+        'test@accenture.com',
+        'password123',
+      );
+      expect(auth.signInWithEmailAndPassword).toHaveBeenCalledWith(
+        'test@accenture.com',
+        'password123',
+      );
+      expect(userMock.updateProfile).toHaveBeenCalledWith({
+        displayName: 'Test User',
+      });
+    });
+  });
+
+  describe('signIn', () => {
+    it('should signIn user', async () => {
+      await service.signIn('test', 'password');
+
+      expect(auth.signInWithEmailAndPassword).toHaveBeenCalledWith(
+        'test',
+        'password',
+      );
+    });
+  });
+
+  describe('signout', () => {
+    it('should signout user', async () => {
+      await service.signout();
+
+      expect(auth.signOut).toHaveBeenCalledWith();
+    });
+  });
+
+  describe('getUser', () => {
+    it('should get user from the auth', async () => {
+      const actual = await service.getUser();
+
+      expect(actual).toBe('test');
+    });
+
+    it('should get user from the auth', async () => {
+      await service.signIn('test', 'test');
+
+      const actual = await service.getUser();
+
+      expect(actual).toBe(userMock);
+    });
   });
 });

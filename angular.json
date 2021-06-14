@@ -30,9 +30,7 @@
               "projects/blackboard/src/favicon.ico",
               "projects/blackboard/src/assets"
             ],
-            "styles": [
-              "projects/blackboard/src/styles.scss"
-            ],
+            "styles": ["projects/blackboard/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -98,9 +96,7 @@
               "projects/blackboard/src/favicon.ico",
               "projects/blackboard/src/assets"
             ],
-            "styles": [
-              "projects/blackboard/src/styles.scss"
-            ],
+            "styles": ["projects/blackboard/src/styles.scss"],
             "scripts": []
           }
         }
