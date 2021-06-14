@@ -7,8 +7,9 @@ import { TalkingPoint, TalkingpointService } from './talkingpoint.service';
 describe('TalkingpointService', () => {
   let service: TalkingpointService;
 
-  const db = jasmine.createSpyObj(['list']);
+  const db = jasmine.createSpyObj(['list', 'object']);
   db.list.and.returnValue({ push: () => {}, valueChanges: () => of() });
+  db.object.and.returnValue({ push: () => {}, valueChanges: () => of() });
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -23,9 +24,17 @@ describe('TalkingpointService', () => {
 
   describe('save', () => {
     it('should save', () => {
-      service.save({ name: 'Stephen' } as TalkingPoint);
+      service.save({ name: 'Stephen', type: 'event' } as TalkingPoint);
 
-      expect(db.list).toHaveBeenCalledWith('talkingpoints');
+      expect(db.list).toHaveBeenCalledWith('talkingpoints/event');
+    });
+  });
+
+  describe('getByKey', () => {
+    it('should get a record', () => {
+      service.getByKey('Stephen', 'event');
+
+      expect(db.object).toHaveBeenCalledWith('talkingpoints/Stephen/event');
     });
   });
 });
