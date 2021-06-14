@@ -1,8 +1,5 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "cli": {
-    "analytics": "141370e4-96c3-4873-a2ad-75470c09c323"
-  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
@@ -33,9 +30,7 @@
               "projects/blackboard/src/favicon.ico",
               "projects/blackboard/src/assets"
             ],
-            "styles": [
-              "projects/blackboard/src/styles.scss"
-            ],
+            "styles": ["projects/blackboard/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -101,9 +96,7 @@
               "projects/blackboard/src/favicon.ico",
               "projects/blackboard/src/assets"
             ],
-            "styles": [
-              "projects/blackboard/src/styles.scss"
-            ],
+            "styles": ["projects/blackboard/src/styles.scss"],
             "scripts": []
           }
         }
