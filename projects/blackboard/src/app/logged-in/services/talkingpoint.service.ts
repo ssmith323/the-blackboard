@@ -25,11 +25,6 @@ export class TalkingpointService {
       )
       .valueChanges();
   }
-
-  update(id: string, type: string, value: TalkingPoint) {
-    return this.db.list<TalkingPoint>(`talkingpoints/${type}`).update(id, value);
-  }
-
 }
 
 export interface TalkingPoint {
