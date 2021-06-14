@@ -24,7 +24,6 @@ const routes: Routes = [
       { path: 'create', component: CreateTalkingpointComponent },
       { path: 'setup', component: StartPresentationComponent },
       { path: 'view/:id', component: ViewAllComponent },
-      { path: 'view/:id/:key', component: CreateTalkingpointComponent },
     ],
   },
   {

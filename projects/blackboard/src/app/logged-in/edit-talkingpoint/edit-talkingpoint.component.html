@@ -1,0 +1,17 @@
+<div class="container">
+    <mat-card>
+        <mat-card-title>Edit Talking Point</mat-card-title>
+        <form [formGroup]="form" (ngSubmit)="submit()">
+            <mat-card-content>
+                <ff-input type="text" label="Title" [control]="form.get('title')"></ff-input>
+                <ff-select label="Type" [control]="form.get('type')" [options]="types"></ff-select>
+                <ff-datepicker label="Date to Remove" [control]="form.get('removalDate')"></ff-datepicker>
+                <ff-input type="text" label="Name" [control]="form.get('name')"></ff-input>
+                <ff-textarea label="Description" [control]="form.get('description')"></ff-textarea>
+            </mat-card-content>
+            <mat-card-actions>
+                <ff-submit [form]="form"></ff-submit>
+            </mat-card-actions>
+        </form>
+    </mat-card>
+</div>
