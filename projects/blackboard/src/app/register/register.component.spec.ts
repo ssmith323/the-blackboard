@@ -30,12 +30,4 @@ describe('RegisterComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
-  fit('should submit register form', async () => {
-    component.submit();
-
-    await Promise.resolve();
-
-    expect(authService.createUser).toHaveBeenCalled();
-  });
-}
+});
