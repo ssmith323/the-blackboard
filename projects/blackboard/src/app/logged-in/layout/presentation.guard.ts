@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { CanActivate, Router, UrlTree } from '@angular/router';
 
 import { PresentationService } from '../services/presentation.service';
 
@@ -8,10 +8,7 @@ import { PresentationService } from '../services/presentation.service';
 })
 export class PresentationGuard implements CanActivate {
   constructor(private pService: PresentationService, private router: Router) {}
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot,
-  ): boolean | UrlTree {
+  canActivate(): boolean | UrlTree {
     if (!this.pService.presentor) {
       return this.router.parseUrl('/setup');
     }

@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormFieldTestingModule } from 'projects/form-fields/src/public-api';
 
 import { AuthService } from '../../services/auth.service';
@@ -18,7 +18,9 @@ describe('CreateTalkingpointComponent', () => {
   const router = jasmine.createSpyObj(['navigateByUrl']);
   router.navigateByUrl.and.returnValue();
 
-  const tpService = jasmine.createSpyObj(['save']);
+  const activedRoute = { snapshot: { params: {} } };
+
+  const tpService = jasmine.createSpyObj(['save', 'getByKey']);
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -28,6 +30,7 @@ describe('CreateTalkingpointComponent', () => {
         { provide: TalkingpointService, useValue: tpService },
         { provide: AuthService, useValue: auth },
         { provide: Router, useValue: router },
+        { provide: ActivatedRoute, useValue: activedRoute },
       ],
     }).compileComponents();
   });
