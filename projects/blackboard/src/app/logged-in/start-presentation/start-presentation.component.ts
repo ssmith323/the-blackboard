@@ -22,6 +22,7 @@ export class StartPresentationComponent
     private pService: PresentationService,
   ) {
     super();
+    this.form = this.fb.group({});
   }
 
   async ngOnInit(): Promise<void> {
