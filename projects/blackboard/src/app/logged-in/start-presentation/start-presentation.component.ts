@@ -34,7 +34,7 @@ export class StartPresentationComponent
     });
   }
 
-  start() {
+  submit() {
     const presentation = this.form.getRawValue();
     this.pService.setValues(presentation);
     this.router.navigateByUrl('presentation');

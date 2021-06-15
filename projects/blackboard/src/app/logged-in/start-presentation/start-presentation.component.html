@@ -1,7 +1,7 @@
 <div class="container">
     <mat-card>
         <mat-card-title>Create Talking Point</mat-card-title>
-        <form [formGroup]="form" (ngSubmit)="start()">
+        <form [formGroup]="form" (ngSubmit)="submit()">
             <mat-card-content>
                 <ff-input type="text" label="Presentor" [control]="getControl('presentor')"></ff-input>
                 <ff-input type="text" label="Date" [control]="getControl('date')"></ff-input>

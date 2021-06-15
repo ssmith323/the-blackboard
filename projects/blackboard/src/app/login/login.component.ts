@@ -26,7 +26,7 @@ export class LoginComponent extends AbstractFormHandler implements OnInit {
     });
   }
 
-  async submitLogin() {
+  async submit(): Promise<void> {
     const { email, password } = this.form.value;
     await this.auth.signIn(email, password);
     this.router.navigateByUrl('/home');
