@@ -6,7 +6,7 @@ import { PresentationGuard } from './presentation.guard';
 describe('PresentationGuard', () => {
   let guard: PresentationGuard;
 
-  const pService = { presentor: '' } as PresentationService;
+  let pService = {} as PresentationService;
   const router = jasmine.createSpyObj(['parseUrl']);
   router.parseUrl.and.returnValue(new UrlTree());
 
@@ -20,14 +20,15 @@ describe('PresentationGuard', () => {
 
   describe('canActivate', () => {
     it('should stay on the page', () => {
+      pService.presentor = 'Stephen';
       guard = new PresentationGuard(pService, router);
       const actual = guard.canActivate();
 
       expect(actual).toBeTrue();
     });
 
-    it('should stay on the page', () => {
-      pService.presentor = 'Stephen';
+    it('should redirect to setup', () => {
+      pService.presentor = '';
       guard = new PresentationGuard(pService, router);
       const actual = guard.canActivate();
 
