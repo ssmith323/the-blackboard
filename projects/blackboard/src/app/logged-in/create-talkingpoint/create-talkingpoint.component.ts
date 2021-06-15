@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { AbstractFormHandler } from 'projects/form-fields/src/lib/abstract-form-handler';
 import { BasicOption } from 'projects/form-fields/src/public-api';
 
 import { AuthService } from '../../services/auth.service';
@@ -11,8 +12,10 @@ import { TalkingPoint, TalkingpointService } from '../services/talkingpoint.serv
   templateUrl: './create-talkingpoint.component.html',
   styleUrls: ['./create-talkingpoint.component.scss'],
 })
-export class CreateTalkingpointComponent implements OnInit {
-  form: FormGroup;
+export class CreateTalkingpointComponent
+  extends AbstractFormHandler
+  implements OnInit
+{
   types: BasicOption<any>[];
   params: Params;
   editItem: boolean;
@@ -24,6 +27,7 @@ export class CreateTalkingpointComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute,
   ) {
+    super();
     this.params = activatedRoute.snapshot.params;
     this.editItem = !!this.params.key;
     this.form = this.fb.group({
@@ -64,9 +68,7 @@ export class CreateTalkingpointComponent implements OnInit {
   }
 
   submit() {
-    const talkingpoint: TalkingPoint = this.form.value;
-    talkingpoint.name = this.form.get('name')?.value;
-    talkingpoint.type = this.form.get('type')?.value;
+    const talkingpoint: TalkingPoint = this.form.getRawValue();
     talkingpoint.removalDate = new Date(talkingpoint.removalDate).getTime();
     if (this.editItem) {
       this.talkingpointService.update(

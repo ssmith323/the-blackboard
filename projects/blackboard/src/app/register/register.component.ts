@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AbstractFormHandler } from 'projects/form-fields/src/lib/abstract-form-handler';
 
 import { AuthService } from '../services/auth.service';
 import { emailCheck } from './validators';
@@ -10,15 +11,14 @@ import { emailCheck } from './validators';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
 })
-export class RegisterComponent {
-  registerForm: FormGroup;
-
+export class RegisterComponent extends AbstractFormHandler {
   constructor(
     private fb: FormBuilder,
     private auth: AuthService,
     private router: Router,
   ) {
-    this.registerForm = this.fb.group({
+    super();
+    this.form = this.fb.group({
       email: ['', [Validators.required, emailCheck()]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       firstName: ['', Validators.required],
@@ -27,7 +27,7 @@ export class RegisterComponent {
   }
 
   async submit() {
-    const user = this.registerForm.value;
+    const user = this.form.value;
     try {
       await this.auth.createUser(user);
       this.router.navigateByUrl('/home');
