@@ -1,6 +1,6 @@
 <div class="container">
     <h1 class="mat-display-2">{{ name | async | titlecase}}</h1>
-    <dd *ngFor="let t of talkingPoints | async | async">
+    <dd *ngFor="let t of talkingPoints | async">
         <app-item [item]="t"></app-item>
     </dd>
 </div>

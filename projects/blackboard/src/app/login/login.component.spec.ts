@@ -38,10 +38,10 @@ describe('LoginComponent', () => {
   });
 
   it('should submit when saved', async () => {
-    component.login.get('email')?.setValue('hi');
-    component.login.get('password')?.setValue('hi');
+    component.form.get('email')?.setValue('hi');
+    component.form.get('password')?.setValue('hi');
 
-    component.submitLogin();
+    component.submit();
 
     expect(auth.signIn).toHaveBeenCalledWith('hi', 'hi');
     // expect(router.navigateByUrl).toHaveBeenCalledWith('/home');
