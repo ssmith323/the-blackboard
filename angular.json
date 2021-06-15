@@ -102,6 +102,15 @@
             "styles": ["projects/blackboard/src/styles.scss"],
             "scripts": []
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/blackboard/**/*.ts",
+              "projects/blackboard/**/*.html"
+            ]
+          }
         }
       }
     },
