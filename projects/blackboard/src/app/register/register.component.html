@@ -1,14 +1,14 @@
 <mat-card>
     <mat-card-title>Register</mat-card-title>
-    <form [formGroup]="registerForm" (ngSubmit)="submit()">
+    <form [formGroup]="form" (ngSubmit)="submit()">
         <mat-card-content>
-            <ff-input type="text" label="Email" [control]="registerForm.get('email')"></ff-input>
-            <ff-input type="password" label="Password" [control]="registerForm.get('password')"></ff-input>
-            <ff-input type="text" label="First Name" [control]="registerForm.get('firstName')"></ff-input>
-            <ff-input type="text" label="Last Name" [control]="registerForm.get('lastName')"></ff-input>
+            <ff-input type="text" label="Email" [control]="getControl('email')"></ff-input>
+            <ff-input type="password" label="Password" [control]="getControl('password')"></ff-input>
+            <ff-input type="text" label="First Name" [control]="getControl('firstName')"></ff-input>
+            <ff-input type="text" label="Last Name" [control]="getControl('lastName')"></ff-input>
         </mat-card-content>
         <mat-card-actions>
-            <ff-submit [form]="registerForm"></ff-submit>
+            <ff-submit [form]="form"></ff-submit>
             <a mat-stroked-button color="accent" routerLink="/login">Cancel</a>
         </mat-card-actions>
     </form>

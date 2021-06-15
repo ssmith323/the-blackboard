@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AbstractFormHandler } from 'projects/form-fields/src/lib/abstract-form-handler';
 
 import { AuthService } from '../services/auth.service';
 
@@ -9,24 +10,24 @@ import { AuthService } from '../services/auth.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent implements OnInit {
-  login!: FormGroup;
-
+export class LoginComponent extends AbstractFormHandler implements OnInit {
   constructor(
     private fb: FormBuilder,
     private auth: AuthService,
     private router: Router,
-  ) {}
+  ) {
+    super();
+  }
 
   ngOnInit(): void {
-    this.login = this.fb.group({
+    this.form = this.fb.group({
       email: ['', Validators.required],
       password: ['', Validators.required],
     });
   }
 
   async submitLogin() {
-    const { email, password } = this.login.value;
+    const { email, password } = this.form.value;
     await this.auth.signIn(email, password);
     this.router.navigateByUrl('/home');
   }

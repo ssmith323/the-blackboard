@@ -1,13 +1,13 @@
 <div class="container">
     <mat-card>
         <mat-card-title>Login</mat-card-title>
-        <form [formGroup]="login" (ngSubmit)="submitLogin()">
+        <form [formGroup]="form" (ngSubmit)="submitLogin()">
         <mat-card-content>
-            <ff-input type="text" label="Email" [control]="login.get('email')"></ff-input>
-            <ff-input type="password" label="Password" [control]="login.get('password')"></ff-input>
+            <ff-input type="text" label="Email" [control]="getControl('email')"></ff-input>
+            <ff-input type="password" label="Password" [control]="getControl('password')"></ff-input>
         </mat-card-content>
         <mat-card-actions>
-            <ff-submit [form]="login"></ff-submit>
+            <ff-submit [form]="form"></ff-submit>
             <a mat-stroked-button color="accent" routerLink="/register">Register</a>
         </mat-card-actions>
         </form>

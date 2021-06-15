@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AbstractFormHandler } from 'projects/form-fields/src/lib/abstract-form-handler';
 
 import { AuthService } from '../../services/auth.service';
 import { PresentationService } from '../services/presentation.service';
@@ -10,33 +11,31 @@ import { PresentationService } from '../services/presentation.service';
   templateUrl: './start-presentation.component.html',
   styleUrls: ['./start-presentation.component.scss'],
 })
-export class StartPresentationComponent implements OnInit {
-  form!: FormGroup;
-
+export class StartPresentationComponent
+  extends AbstractFormHandler
+  implements OnInit
+{
   constructor(
     private fb: FormBuilder,
     private auth: AuthService,
     private router: Router,
     private pService: PresentationService,
   ) {
-    this.auth.getUser().then(({ displayName }) => {
-      this.form = this.fb.group({
-        presentor: [
-          { value: displayName, disabled: true },
-          Validators.required,
-        ],
-        date: [{ value: this.getDate(), disabled: true }, Validators.required],
-        youtubeLink: '',
-      });
+    super();
+  }
+
+  async ngOnInit(): Promise<void> {
+    const { displayName } = await this.auth.getUser();
+
+    this.form = this.fb.group({
+      presentor: [{ value: displayName, disabled: true }, Validators.required],
+      date: [{ value: this.getDate(), disabled: true }, Validators.required],
+      youtubeLink: '',
     });
   }
 
-  ngOnInit(): void {}
-
   start() {
-    const presentation = this.form.value;
-    presentation.presentor = this.form.get('presentor')?.value;
-    presentation.date = this.form.get('date')?.value;
+    const presentation = this.form.getRawValue();
     this.pService.setValues(presentation);
     this.router.navigateByUrl('presentation');
   }

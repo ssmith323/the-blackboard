@@ -24,5 +24,5 @@ $dark-theme: mat.define-dark-theme((color: (primary: $dark-primary,
 // to an ancestor element of the components (such as `body`).
 .dark-theme {
     @include mat.core-theme($dark-theme);
-    @include mat.all-component-themes($dark-theme);
+    @include mat.all-component-colors($dark-theme);
 }
