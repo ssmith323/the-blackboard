@@ -30,10 +30,10 @@ module.exports = function (config) {
       reporters: [{ type: 'html' }, { type: 'text-summary' }],
       check: {
         global: {
-          statements: 85,
-          branches: 25,
-          functions: 83,
-          lines: 84,
+          statements: 87,
+          branches: 31,
+          functions: 84,
+          lines: 86,
         },
       },
     },
