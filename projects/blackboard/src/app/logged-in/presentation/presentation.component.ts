@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { PresentationService } from '../services/presentation.service';
@@ -8,7 +8,7 @@ import { PresentationService } from '../services/presentation.service';
   templateUrl: './presentation.component.html',
   styleUrls: ['./presentation.component.scss'],
 })
-export class PresentationComponent implements OnInit {
+export class PresentationComponent {
   presentor: string;
   date: string;
   order = [
@@ -28,8 +28,6 @@ export class PresentationComponent implements OnInit {
     this.presentor = presentationService.presentor;
     this.date = presentationService.date;
   }
-
-  ngOnInit(): void {}
 
   navigate(direction: number) {
     this.place = this.place + direction;

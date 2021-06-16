@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Observable } from 'rxjs';
 
@@ -9,7 +9,7 @@ import { PresentationService } from '../../services/presentation.service';
   templateUrl: './countdown.component.html',
   styleUrls: ['./countdown.component.scss'],
 })
-export class CountdownComponent implements OnInit {
+export class CountdownComponent {
   videoProvided: boolean;
   safeURL: SafeResourceUrl;
   secondCountdown!: Observable<number>;
@@ -20,6 +20,4 @@ export class CountdownComponent implements OnInit {
       `https://www.youtube.com/embed/${pService.youtubeLink}`,
     );
   }
-
-  ngOnInit(): void {}
 }

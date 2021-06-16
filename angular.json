@@ -1,5 +1,8 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "defaultCollection": "@angular-eslint/schematics"
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
@@ -98,6 +101,15 @@
             ],
             "styles": ["projects/blackboard/src/styles.scss"],
             "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/blackboard/**/*.ts",
+              "projects/blackboard/**/*.html"
+            ]
           }
         }
       }
