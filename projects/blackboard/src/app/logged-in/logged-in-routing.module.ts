@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { canActivate } from '@angular/fire/auth-guard';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AnonymousTemplateComponent } from '../layout/anonymous-template/anonymous-template.component';
@@ -6,6 +7,7 @@ import { LayoutModule } from '../layout/layout.module';
 import { LoginTemplateComponent } from '../layout/login-template/login-template.component';
 import { CreateTalkingpointComponent } from './create-talkingpoint/create-talkingpoint.component';
 import { HomeComponent } from './home/home.component';
+import { EditGuard } from './layout/edit.guard';
 import { PresentationGuard } from './layout/presentation.guard';
 import { CountdownComponent } from './presentation/countdown/countdown.component';
 import { PresentationComponent } from './presentation/presentation.component';
@@ -24,7 +26,11 @@ const routes: Routes = [
       { path: 'create', component: CreateTalkingpointComponent },
       { path: 'setup', component: StartPresentationComponent },
       { path: 'view/:id', component: ViewAllComponent },
-      { path: 'view/:id/:key', component: CreateTalkingpointComponent },
+      { 
+        path: 'view/:id/:key', 
+        component: CreateTalkingpointComponent,
+        canActivate: [EditGuard] 
+      },
     ],
   },
   {
