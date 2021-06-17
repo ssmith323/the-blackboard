@@ -6,13 +6,19 @@ import { Injectable } from '@angular/core';
 export class PresentationService {
   presentor!: string;
   date!: string;
-  youtubeLink!: string;
+  youtubeLink!: string | null;
 
   constructor() {}
 
-  setValues(values: any) {
+  setValues(values: Prenentation) {
     this.presentor = values.presentor;
     this.date = values.date;
-    this.youtubeLink = values.youtubeLink;
+    this.youtubeLink = values.youtubeLink || null;
   }
+}
+
+export interface Prenentation {
+  presentor: string;
+  date: string;
+  youtubeLink?: string;
 }

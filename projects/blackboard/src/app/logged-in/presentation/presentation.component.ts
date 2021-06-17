@@ -16,6 +16,7 @@ export class PresentationComponent {
     'new-faces',
     'interestings',
     'events',
+    'helps',
     'shout-outs',
     'strech',
   ];
