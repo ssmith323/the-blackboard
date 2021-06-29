@@ -1,34 +1,41 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
+import firebase from 'firebase';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private user: any;
+  private user!: firebase.User;
 
   constructor(private auth: AngularFireAuth) {}
 
   async createUser(user: User): Promise<void> {
-    await this.auth.createUserWithEmailAndPassword(user.email, user.password);
-    await this.signIn(user.email, user.password);
-    if (this.user) {
-      await this.user.updateProfile({
-        displayName: `${user.firstName} ${user.lastName}`,
-      });
-    }
+    let userCredentials = await this.auth.createUserWithEmailAndPassword(
+      user.email,
+      user.password,
+    );
+    await userCredentials.user?.updateProfile({
+      displayName: `${user.firstName} ${user.lastName}`,
+    });
+    userCredentials.user?.sendEmailVerification();
   }
 
   async signIn(email: string, password: string): Promise<void> {
-    const user = await this.auth.signInWithEmailAndPassword(email, password);
-    this.user = user.user;
+    const userCredential = await this.auth.signInWithEmailAndPassword(
+      email,
+      password,
+    );
+    if (userCredential && userCredential.user) {
+      this.user = userCredential.user;
+    }
   }
 
   async signout(): Promise<void> {
     await this.auth.signOut();
   }
 
-  async getUser() {
+  async getUser(): Promise<firebase.User> {
     return this.user || (await this.auth.currentUser);
   }
 }

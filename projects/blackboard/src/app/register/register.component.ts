@@ -30,7 +30,7 @@ export class RegisterComponent extends AbstractFormHandler {
     const user = this.form.value;
     try {
       await this.auth.createUser(user);
-      this.router.navigateByUrl('/home');
+      this.router.navigateByUrl('/login');
     } catch (e) {
       console.log(e);
     }
