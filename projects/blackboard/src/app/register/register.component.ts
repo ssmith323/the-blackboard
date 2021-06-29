@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AbstractFormHandler } from 'projects/form-fields/src/lib/abstract-form-handler';
 
@@ -16,6 +17,7 @@ export class RegisterComponent extends AbstractFormHandler {
     private fb: FormBuilder,
     private auth: AuthService,
     private router: Router,
+    private snackBar: MatSnackBar,
   ) {
     super();
     this.form = this.fb.group({
@@ -30,6 +32,8 @@ export class RegisterComponent extends AbstractFormHandler {
     const user = this.form.value;
     try {
       await this.auth.createUser(user);
+
+      this.snackBar.open('Verify Your Email Then Login!', 'Dismiss');
       this.router.navigateByUrl('/login');
     } catch (e) {
       console.log(e);

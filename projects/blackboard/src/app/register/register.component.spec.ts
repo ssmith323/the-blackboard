@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatCardModule } from '@angular/material/card';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { RouterTestingModule } from '@angular/router/testing';
 import { FormFieldTestingModule } from 'projects/form-fields/src/public-api';
 
@@ -16,7 +17,12 @@ describe('RegisterComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [RegisterComponent],
-      imports: [FormFieldTestingModule, RouterTestingModule, MatCardModule],
+      imports: [
+        FormFieldTestingModule,
+        RouterTestingModule,
+        MatCardModule,
+        MatSnackBarModule,
+      ],
       providers: [{ provide: AuthService, useValue: authService }],
     }).compileComponents();
   });
