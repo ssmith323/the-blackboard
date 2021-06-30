@@ -111,6 +111,46 @@
               "projects/blackboard/**/*.html"
             ]
           }
+        },
+        "cypress-run": {
+          "builder": "@briebug/cypress-schematic:cypress",
+          "options": {
+            "devServerTarget": "blackboard:serve",
+            "configFile": "projects/blackboard/cypress.json"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "blackboard:serve:production"
+            }
+          }
+        },
+        "cypress-open": {
+          "builder": "@briebug/cypress-schematic:cypress",
+          "options": {
+            "devServerTarget": "blackboard:serve",
+            "watch": true,
+            "headless": false,
+            "configFile": "projects/blackboard/cypress.json"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "blackboard:serve:production"
+            }
+          }
+        },
+        "e2e": {
+          "builder": "@briebug/cypress-schematic:cypress",
+          "options": {
+            "devServerTarget": "blackboard:serve",
+            "watch": true,
+            "headless": false,
+            "configFile": "projects/blackboard/cypress.json"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "blackboard:serve:production"
+            }
+          }
         }
       }
     },

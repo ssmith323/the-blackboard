@@ -1,0 +1,9 @@
+{
+  "integrationFolder": "projects/blackboard/cypress/integration",
+  "supportFile": "projects/blackboard/cypress/support/index.ts",
+  "videosFolder": "projects/blackboard/cypress/videos",
+  "screenshotsFolder": "projects/blackboard/cypress/screenshots",
+  "pluginsFile": "projects/blackboard/cypress/plugins/index.js",
+  "fixturesFolder": "projects/blackboard/cypress/fixtures",
+  "baseUrl": "http://localhost:4200"
+}
