@@ -1,4 +1,5 @@
 it('loads examples', () => {
   cy.visit('/');
-  cy.contains('Replace me with something relevant');
+  cy.contains('Login');
+  cy.get('#EmailInput').type('yes');
 });

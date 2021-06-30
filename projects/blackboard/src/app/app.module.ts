@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
-import { AngularFireAuthModule } from '@angular/fire/auth';
+import {
+  AngularFireAuthModule,
+  USE_EMULATOR as USE_AUTH_EMULATOR,
+} from '@angular/fire/auth';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -27,7 +30,12 @@ import { AppComponent } from './app.component';
     AngularFireAuthModule,
     MatNativeDateModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: USE_AUTH_EMULATOR,
+      useValue: environment.useEmulators ? ['localhost', 9099] : undefined,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

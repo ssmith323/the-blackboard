@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  useEmulators: true,
   firebase: {
     apiKey: 'AIzaSyCyr6gRls5jYU9CJJKLhdYI_PG4GM2CzJU',
     authDomain: 'sjs-the-blackboard.firebaseapp.com',

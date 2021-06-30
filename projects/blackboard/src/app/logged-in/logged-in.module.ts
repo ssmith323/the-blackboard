@@ -1,17 +1,25 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { AngularFireDatabaseModule } from '@angular/fire/database';
+import {
+  AngularFireDatabaseModule,
+  USE_EMULATOR as USE_DATABASE_EMULATOR,
+} from '@angular/fire/database';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { FormFieldModule } from 'projects/form-fields/src/public-api';
 
+import { environment } from '../../environments/environment';
 import { ItemComponent } from './item/item.component';
 import { LoggedInRoutingModule } from './logged-in-routing.module';
 import { TimerComponent } from './presentation/countdown/timer/timer.component';
 
 @NgModule({
-  declarations: [LoggedInRoutingModule.components, ItemComponent, TimerComponent],
+  declarations: [
+    LoggedInRoutingModule.components,
+    ItemComponent,
+    TimerComponent,
+  ],
   imports: [
     CommonModule,
     LoggedInRoutingModule,
@@ -20,6 +28,12 @@ import { TimerComponent } from './presentation/countdown/timer/timer.component';
     MatButtonModule,
     FormFieldModule,
     AngularFireDatabaseModule,
+  ],
+  providers: [
+    {
+      provide: USE_DATABASE_EMULATOR,
+      useValue: environment.useEmulators ? ['localhost', 9000] : undefined,
+    },
   ],
 })
 export class LoggedInModule {}

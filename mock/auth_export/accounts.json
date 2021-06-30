@@ -1,0 +1,27 @@
+{
+  "kind": "identitytoolkit#DownloadAccountResponse",
+  "users": [
+    {
+      "localId": "l3tk5081XpiO6sLxRREK7jPdZgq3",
+      "createdAt": "1625079628435",
+      "lastLoginAt": "1625079628432",
+      "emailVerified": true,
+      "email": "s.j.smith@accenture.com",
+      "salt": "fakeSaltUKROQOAeJhQWwOU5G5Mk",
+      "passwordHash": "fakeHash:salt=fakeSaltUKROQOAeJhQWwOU5G5Mk:password=start123",
+      "passwordUpdatedAt": 1625079628434,
+      "validSince": "1625079628",
+      "providerUserInfo": [
+        {
+          "providerId": "password",
+          "email": "s.j.smith@accenture.com",
+          "federatedId": "s.j.smith@accenture.com",
+          "rawId": "s.j.smith@accenture.com",
+          "displayName": "Stephen Smith"
+        }
+      ],
+      "lastRefreshAt": "2021-06-30T19:00:47.513Z",
+      "displayName": "Stephen Smith"
+    }
+  ]
+}
