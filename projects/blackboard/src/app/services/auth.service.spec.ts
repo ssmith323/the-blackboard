@@ -1,3 +1,5 @@
+import firebase from 'firebase';
+
 import { AuthService, User } from './auth.service';
 
 describe('AuthService', () => {
@@ -9,14 +11,21 @@ describe('AuthService', () => {
     'signOut',
     'currentUser',
   ]);
-  const userMock = jasmine.createSpyObj(['updateProfile']);
+  const userMock = jasmine.createSpyObj([
+    'updateProfile',
+    'sendEmailVerification',
+  ]);
   userMock.updateProfile.and.returnValue(Promise.resolve());
+  userMock.sendEmailVerification.and.returnValue(Promise.resolve());
+
   auth.signInWithEmailAndPassword.and.returnValue(
     Promise.resolve({ user: userMock }),
   );
-  auth.currentUser = Promise.resolve('test');
+  auth.currentUser = Promise.resolve({ displayName: 'test' });
 
-  auth.createUserWithEmailAndPassword.and.returnValue(Promise.resolve());
+  auth.createUserWithEmailAndPassword.and.returnValue(
+    Promise.resolve({ user: userMock }),
+  );
 
   beforeEach(() => {
     service = new AuthService(auth);
@@ -41,10 +50,7 @@ describe('AuthService', () => {
         'test@accenture.com',
         'password123',
       );
-      expect(auth.signInWithEmailAndPassword).toHaveBeenCalledWith(
-        'test@accenture.com',
-        'password123',
-      );
+      expect(userMock.sendEmailVerification).toHaveBeenCalled();
       expect(userMock.updateProfile).toHaveBeenCalledWith({
         displayName: 'Test User',
       });
@@ -74,7 +80,7 @@ describe('AuthService', () => {
     it('should get user from the auth', async () => {
       const actual = await service.getUser();
 
-      expect(actual).toBe('test');
+      expect(actual).toEqual({ displayName: 'test' } as firebase.User);
     });
 
     it('should get user from the auth', async () => {

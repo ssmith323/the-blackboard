@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import firebase from 'firebase';
 
 import { AuthService } from '../../services/auth.service';
 
@@ -8,7 +9,7 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  user: any;
+  user!: firebase.User;
 
   constructor(private auth: AuthService) {}
 

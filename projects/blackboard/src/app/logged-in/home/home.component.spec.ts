@@ -8,7 +8,9 @@ describe('HomeComponent', () => {
   let fixture: ComponentFixture<HomeComponent>;
 
   const auth = jasmine.createSpyObj(['getUser']);
-  auth.getUser.and.returnValue(Promise.resolve({ displayName: 'Stephen' }));
+  auth.getUser.and.returnValue(
+    Promise.resolve({ displayName: 'Stephen', emailVerified: true }),
+  );
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -23,7 +25,7 @@ describe('HomeComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create', async () => {
     expect(component).toBeTruthy();
   });
 });
