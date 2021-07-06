@@ -26,9 +26,11 @@ describe('EditGuard', () => {
       const route = new ActivatedRouteSnapshot();
       route.params = { id: 'type', key: '123' };
 
-      await guard.canActivate(route);
-
-      expect(router.parseUrl).toHaveBeenCalledOnceWith('/view/type');
+      guard
+        .canActivate(route)
+        .subscribe(() =>
+          expect(router.parseUrl).toHaveBeenCalledOnceWith('/view/type'),
+        );
     });
 
     it('should allow it', async () => {
@@ -37,9 +39,7 @@ describe('EditGuard', () => {
       const route = new ActivatedRouteSnapshot();
       route.params = { id: 'type', key: '123' };
 
-      const actual = await guard.canActivate(route);
-
-      expect(actual).toBeTrue();
+      guard.canActivate(route).subscribe((actual) => expect(actual).toBeTrue());
     });
   });
 });
