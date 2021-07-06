@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatCardModule } from '@angular/material/card';
 import { Router } from '@angular/router';
 import { FormFieldTestingModule } from 'projects/form-fields/src/public-api';
 
@@ -20,7 +21,7 @@ describe('StartPresentationComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [StartPresentationComponent],
-      imports: [FormFieldTestingModule],
+      imports: [FormFieldTestingModule, MatCardModule],
       providers: [
         { provide: AuthService, useValue: auth },
         { provide: Router, useValue: router },
