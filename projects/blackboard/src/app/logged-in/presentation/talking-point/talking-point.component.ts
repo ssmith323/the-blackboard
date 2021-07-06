@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { mergeMap } from 'rxjs/operators';
 
-import { TalkingPoint, TalkingpointService } from '../../services/talkingpoint.service';
+import {
+  TalkingPoint,
+  TalkingpointService,
+} from '../../services/talkingpoint.service';
 
 @Component({
   selector: 'app-talking-point',
@@ -11,7 +14,7 @@ import { TalkingPoint, TalkingpointService } from '../../services/talkingpoint.s
   styleUrls: ['./talking-point.component.scss'],
 })
 export class TalkingPointComponent implements OnInit {
-  talkingPoints!: Observable<Observable<TalkingPoint[]>>;
+  talkingPoints!: Observable<TalkingPoint[]>;
 
   constructor(
     private activeRoute: ActivatedRoute,
@@ -20,8 +23,7 @@ export class TalkingPointComponent implements OnInit {
 
   ngOnInit(): void {
     this.talkingPoints = this.activeRoute.params.pipe(
-      map((param) => param.id),
-      map((id) => this.tpService.getBeforeToday(id)),
+      mergeMap((param) => this.tpService.getBeforeToday(param.id)),
     );
   }
 }

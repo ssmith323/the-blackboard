@@ -11,6 +11,7 @@ describe('TalkingPointComponent', () => {
   let fixture: ComponentFixture<TalkingPointComponent>;
 
   const tpService = jasmine.createSpyObj(['getBeforeToday']);
+  tpService.getBeforeToday.and.returnValue(of([]));
   const activedRoute = { params: of({ id: '11' }) };
 
   beforeEach(async () => {

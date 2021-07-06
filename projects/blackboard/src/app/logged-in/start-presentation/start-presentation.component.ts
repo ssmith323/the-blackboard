@@ -15,6 +15,7 @@ export class StartPresentationComponent
   extends AbstractFormHandler
   implements OnInit
 {
+  ready = false;
   constructor(
     private fb: FormBuilder,
     private auth: AuthService,
@@ -33,6 +34,7 @@ export class StartPresentationComponent
       date: [{ value: this.getDate(), disabled: true }, Validators.required],
       youtubeLink: '',
     });
+    this.ready = true;
   }
 
   submit() {

@@ -1,5 +1,10 @@
 {
   "rules": {
+    "talkingpoints": {
+      "$tp": {
+        ".indexOn": "removalDate"
+      }
+    },
     ".read": "auth != null && auth.token.email_verified === true",
     ".write": "auth != null && auth.token.email_verified === true"
   }
