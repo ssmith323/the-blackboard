@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { MatCardModule } from '@angular/material/card';
+import { MatCardModule, MatCardTitle } from '@angular/material/card';
+import { By } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { FormFieldTestingModule } from 'projects/form-fields/src/public-api';
 
@@ -38,5 +39,12 @@ describe('StartPresentationComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should have a header', () => {
+    expect(
+      fixture.debugElement.query(By.directive(MatCardTitle)).nativeElement
+        .innerText,
+    ).toBe('Setup Presentation');
   });
 });

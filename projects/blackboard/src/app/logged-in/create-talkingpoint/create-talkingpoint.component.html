@@ -1,17 +1,35 @@
 <div class="container">
-    <mat-card>
-        <mat-card-title>Create Talking Point</mat-card-title>
-        <form [formGroup]="form" (ngSubmit)="submit()">
-            <mat-card-content>
-                <ff-input type="text" label="Title" [control]="getControl('title')"></ff-input>
-                <ff-select label="Type" [control]="getControl('type')" [options]="types"></ff-select>
-                <ff-datepicker label="Date to Remove" [control]="getControl('removalDate')"></ff-datepicker>
-                <ff-input type="text" label="Name" [control]="getControl('name')"></ff-input>
-                <ff-textarea label="Description" [control]="getControl('description')"></ff-textarea>
-            </mat-card-content>
-            <mat-card-actions>
-                <ff-submit [form]="form"></ff-submit>
-            </mat-card-actions>
-        </form>
-    </mat-card>
+  <mat-card>
+    <mat-card-title>Create Talking Point</mat-card-title>
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <mat-card-content>
+        <ff-input
+          type="text"
+          label="Title"
+          [control]="getControl('title')"
+        ></ff-input>
+        <ff-select
+          label="Type"
+          [control]="getControl('type')"
+          [options]="types"
+        ></ff-select>
+        <ff-datepicker
+          label="Date to Remove"
+          [control]="getControl('removalDate')"
+        ></ff-datepicker>
+        <ff-input
+          type="text"
+          label="Name"
+          [control]="getControl('name')"
+        ></ff-input>
+        <ff-textarea
+          label="Description"
+          [control]="getControl('description')"
+        ></ff-textarea>
+      </mat-card-content>
+      <mat-card-actions>
+        <ff-submit [form]="form" label="Create"></ff-submit>
+      </mat-card-actions>
+    </form>
+  </mat-card>
 </div>

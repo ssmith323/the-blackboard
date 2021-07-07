@@ -13,6 +13,8 @@ import { emailCheck } from './validators';
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent extends AbstractFormHandler {
+  processingError = false;
+
   constructor(
     private fb: FormBuilder,
     private auth: AuthService,
@@ -36,7 +38,7 @@ export class RegisterComponent extends AbstractFormHandler {
       this.snackBar.open('Verify Your Email Then Login!', 'Dismiss');
       this.router.navigateByUrl('/login');
     } catch (e) {
-      console.log(e);
+      this.processingError = true;
     }
   }
 }

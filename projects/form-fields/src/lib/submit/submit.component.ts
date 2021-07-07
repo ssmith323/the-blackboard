@@ -8,4 +8,5 @@ import { FormGroup } from '@angular/forms';
 })
 export class SubmitComponent {
   @Input() form!: FormGroup;
+  @Input() label = 'Submit';
 }

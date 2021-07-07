@@ -1,6 +1,6 @@
 <div class="container">
   <mat-card>
-    <mat-card-title>Create Talking Point</mat-card-title>
+    <mat-card-title>Setup Presentation</mat-card-title>
     <form *ngIf="ready" [formGroup]="form" (ngSubmit)="submit()">
       <mat-card-content>
         <ff-input
@@ -20,7 +20,7 @@
         ></ff-input>
       </mat-card-content>
       <mat-card-actions>
-        <ff-submit [form]="form"></ff-submit>
+        <ff-submit [form]="form" label="Start"></ff-submit>
       </mat-card-actions>
     </form>
   </mat-card>

@@ -38,10 +38,11 @@ export class SelectComponent extends AbstractFormFieldComponent {
 
 @Component({
   selector: 'ff-submit',
-  template: '<button type="submit">Submit</button>',
+  template: '<button type="submit">{{text}}</button>',
 })
 export class SubmitComponent {
   @Input() form!: FormGroup;
+  @Input() text = 'Submit';
 }
 
 const components = [
